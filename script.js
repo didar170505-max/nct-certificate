@@ -33,11 +33,16 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
   const iinInput = document.querySelector('input[placeholder="ИИН"]').value;
   const iktInput = document.querySelector('input[placeholder="ИКТ"]').value;
 
+  // ❌ если не найден
   if (iinInput !== demoUser.iin || iktInput !== demoUser.ikt) {
     alert("Сертификат не найден");
+
+    document.getElementById("result").classList.add("hidden");
+    document.getElementById("downloadPdf").classList.add("hidden");
     return;
   }
 
+  // ✅ если найден
   document.getElementById("fio").textContent = demoUser.fio;
   document.getElementById("iin").textContent = demoUser.iin;
   document.getElementById("ikt").textContent = demoUser.ikt;
@@ -62,4 +67,5 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
   document.getElementById("total").textContent = demoUser.total;
 
   document.getElementById("result").classList.remove("hidden");
+  document.getElementById("downloadPdf").classList.remove("hidden");
 });
